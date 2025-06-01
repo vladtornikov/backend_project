@@ -3,8 +3,8 @@ services:
     container_name: 'booking_back'
     build:
       context: .
-    ports:
-      - '7777:8000'
+#    ports:
+#      - '7777:8000'
     networks:
       - MyNetwork
     env_file:
@@ -23,7 +23,7 @@ services:
     command: celery --app=src.tasks.celery_app:celery_instance worker -l INFO
 
 
-  booking_cekery_beat:
+  booking_celery_beat:
     container_name: 'booking_celery_beat'
     build:
       context: .
