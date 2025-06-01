@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+
+venv
+.env
+celerybeat-schedule.db
+.env-test
