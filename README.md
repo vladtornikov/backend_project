@@ -20,4 +20,4 @@ docker build -t booking_image .
 docker run --name booking_nginx --volume .\nginx.conf:/etc/nginx/nginx.conf --network=MyNetwork --rm -p 80:80 nginx
 
 # for running through the server 
-docker run --name booking_nginx --volume ./nginx.conf:/etc/nginx/nginx.conf --network=MyNetwork --rm -p 80:80 nginx 
+docker run --name booking_nginx --volume ./nginx.conf:/etc/nginx/nginx.conf --network=MyNetwork -d -p 80:80 nginx 
