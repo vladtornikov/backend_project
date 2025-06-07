@@ -3,7 +3,6 @@ from fastapi import APIRouter, UploadFile, BackgroundTasks
 
 from src.services.images import ImageService
 
-
 router = APIRouter(prefix='/images', tags=['Изображения отелей'])
 
 

@@ -3,12 +3,14 @@ services:
     container_name: 'booking_back'
     build:
       context: .
-#    ports:
-#      - '7777:8000'
+    ports:
+      - '7777:8000'
     networks:
       - MyNetwork
     env_file:
       - .env
+    volumes:
+      - ./src/static/images:/app/src/static/images
 
   booking_celery_worker_service:
     container_name: 'booking_celery_worker'
