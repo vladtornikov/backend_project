@@ -6,3 +6,4 @@ celerybeat-schedule.db
 .env-test
 __pycache__/
 *.pyc
+README1.md
