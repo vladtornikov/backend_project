@@ -3,3 +3,6 @@ venv/
 
 .git/
 .gitignore
+
+course_helpers
+README1.md
