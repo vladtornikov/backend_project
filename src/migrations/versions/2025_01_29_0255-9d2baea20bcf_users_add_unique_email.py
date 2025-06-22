@@ -9,7 +9,7 @@ Create Date: 2025-01-29 02:55:26.026421
 from typing import Sequence, Union
 
 from alembic import op
-import sqlalchemy as sa # noqa: F401
+import sqlalchemy as sa  # noqa: F401
 
 
 # revision identifiers, used by Alembic.
@@ -23,6 +23,5 @@ def upgrade() -> None:
     op.create_unique_constraint(None, "users", ["email"])
 
 
-
 def downgrade() -> None:
-        op.drop_constraint(None, "users", type_="unique")
+    op.drop_constraint(None, "users", type_="unique")

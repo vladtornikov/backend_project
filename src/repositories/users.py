@@ -18,7 +18,3 @@ class UsersRepository(BaseRepository):
         model = result.scalars().one_or_none()
         if model:
             return UserWithHashedPassword.model_validate(model, from_attributes=True)
-
-
-
-

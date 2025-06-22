@@ -3,20 +3,29 @@ from datetime import datetime, timezone, timedelta
 import jwt
 
 from src.config import settings
-from src.exceptions import IncorrectTokenException, UserAlreadyExistsException, \
-    EmailNotFoundException, IncorrectPasswordException, ObjectAlreadyExistsException
+from src.exceptions import (
+    IncorrectTokenException,
+    UserAlreadyExistsException,
+    EmailNotFoundException,
+    IncorrectPasswordException,
+    ObjectAlreadyExistsException,
+)
 from src.schemas_API.users import UserAdd, User, UserRequestAdd
 from src.services.base import BaseService
 
 
 class AuthService(BaseService):
-    pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
+    pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
     def create_access_token(self, data: dict) -> str:
         to_encode = data.copy()
-        expire = datetime.now(timezone.utc) + timedelta(minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES)
+        expire = datetime.now(timezone.utc) + timedelta(
+            minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES
+        )
         to_encode |= {"exp": expire}
-        encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM)
+        encoded_jwt = jwt.encode(
+            to_encode, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM
+        )
         return encoded_jwt
 
     def hash_password(self, password: str) -> str:
@@ -27,7 +36,9 @@ class AuthService(BaseService):
 
     def decode_token(self, access_token: str) -> dict:
         try:
-            return jwt.decode(access_token, settings.JWT_SECRET_KEY, algorithms=settings.JWT_ALGORITHM)
+            return jwt.decode(
+                access_token, settings.JWT_SECRET_KEY, algorithms=settings.JWT_ALGORITHM
+            )
         except jwt.exceptions.DecodeError:
             raise IncorrectTokenException
 
@@ -46,7 +57,7 @@ class AuthService(BaseService):
             raise EmailNotFoundException
         if not self.verify_password(data.password, user.hashed_password):
             raise IncorrectPasswordException
-        access_token = self.create_access_token({'user_id': user.id})
+        access_token = self.create_access_token({"user_id": user.id})
         return access_token
 
     async def get_current_user(self, user_id: int) -> User:

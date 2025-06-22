@@ -27,4 +27,3 @@ class BookingPatch(BaseModel):
     date_to: date | None = Field(None)
     user_id: int | None = Field(None)
     price: int | None = Field(None)
-

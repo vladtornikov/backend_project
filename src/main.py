@@ -9,7 +9,7 @@ from fastapi_cache.backends.redis import RedisBackend
 
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent)) # noqa: E402
+sys.path.append(str(Path(__file__).parent.parent))  # noqa: E402
 
 from src.init import redis_manager
 
@@ -23,13 +23,11 @@ from src.api.facilities import router as router_facilities
 logging.basicConfig(level=logging.INFO)
 
 
-
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await redis_manager.connect()
     FastAPICache.init(RedisBackend(redis_manager.redis), prefix="fastapi-cache")
-    logging.info('FastAPI cache initialized')
+    logging.info("FastAPI cache initialized")
     yield
     await redis_manager.close()
 
@@ -48,6 +46,6 @@ app.include_router(router_image)
 def root():
     return "Привет"
 
-if __name__ == '__main__':
-    uvicorn.run('main:app', host='0.0.0.0', reload=True)
 
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", reload=True)

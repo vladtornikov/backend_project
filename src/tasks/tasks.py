@@ -13,13 +13,14 @@ from src.utils.database_cntxt_mngr import DBManager
 @celery_instance.task
 def test_task() -> None:
     sleep(5)
-    print('Я молодец')
+    print("Я молодец")
+
 
 @celery_instance.task
 def resize_image(image_path: str):
-    logging.debug(f'Вызывается функция resize_image с {image_path}')
+    logging.debug(f"Вызывается функция resize_image с {image_path}")
     sizes = [1000, 500, 200]
-    output_folder = 'src/static/images'
+    output_folder = "src/static/images"
 
     # Открываем изображение
     img = Image.open(image_path)
@@ -31,7 +32,9 @@ def resize_image(image_path: str):
     # Проходим по каждому размеру
     for size in sizes:
         # Сжимаем изображение
-        img_resized = img.resize((size, int(img.height * (size / img.width))), Image.Resampling.LANCZOS)
+        img_resized = img.resize(
+            (size, int(img.height * (size / img.width))), Image.Resampling.LANCZOS
+        )
 
         # Формируем имя нового файла
         new_file_name = f"{name}_{size}px{ext}"
@@ -42,15 +45,17 @@ def resize_image(image_path: str):
         # Сохраняем изображение
         img_resized.save(output_path)
 
-    logging.info(f"Изображение сохранено в следующих размерах: {sizes} в папке {output_folder}")
+    logging.info(
+        f"Изображение сохранено в следующих размерах: {sizes} в папке {output_folder}"
+    )
 
 
 async def get_bookings_with_today_checkin_helper():
     async with DBManager(session_factory=async_session_maker_null_pool) as db:
         bookings = await db.bookings.get_bookings_with_today_checkin()
-        logging.debug(f'{bookings=}')
+        logging.debug(f"{bookings=}")
 
 
-@celery_instance.task(name='booking_today_checkin')
+@celery_instance.task(name="booking_today_checkin")
 def send_emails_to_users_with_today_checkin():
     asyncio.run(get_bookings_with_today_checkin_helper())

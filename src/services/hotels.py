@@ -8,14 +8,13 @@ from src.services.base import BaseService
 
 class HotelService(BaseService):
     async def get_hotels(
-            self,
-            pagination: PaginationDep,
-            title: str | None,
-            location: str | None,
-            date_from: date,
-            date_to: date,
+        self,
+        pagination: PaginationDep,
+        title: str | None,
+        location: str | None,
+        date_from: date,
+        date_to: date,
     ) -> list[Hotel]:
-
         check_dates(date_from, date_to)
         return await self.db.hotels.get_filtered_by_time(
             title=title,
@@ -23,7 +22,7 @@ class HotelService(BaseService):
             date_from=date_from,
             date_to=date_to,
             limit=pagination.per_page,
-            offset=(pagination.page - 1) * pagination.per_page
+            offset=(pagination.page - 1) * pagination.per_page,
         )
 
     async def get_hotel(self, hotel_id: int) -> Hotel:
@@ -46,9 +45,13 @@ class HotelService(BaseService):
             raise HotelNotFoundException
         await self.db.commit()
 
-    async def edit_hotel_partially(self, hotel_data: HotelPatch, hotel_id: int, exclude_unset: bool = False) -> None:
+    async def edit_hotel_partially(
+        self, hotel_data: HotelPatch, hotel_id: int, exclude_unset: bool = False
+    ) -> None:
         try:
-            await self.db.hotels.edit(hotel_data, exclude_unset=exclude_unset, id=hotel_id)
+            await self.db.hotels.edit(
+                hotel_data, exclude_unset=exclude_unset, id=hotel_id
+            )
         except ObjectNotFoundException:
             raise HotelNotFoundException
         await self.db.commit()

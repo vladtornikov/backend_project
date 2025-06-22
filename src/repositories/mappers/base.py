@@ -4,8 +4,8 @@ from pydantic import BaseModel
 
 from src.database import BaseORM
 
-DBModelType = TypeVar('DBModelType', bound=BaseORM)
-SchemaType = TypeVar('SchemaType', bound=BaseModel)
+DBModelType = TypeVar("DBModelType", bound=BaseORM)
+SchemaType = TypeVar("SchemaType", bound=BaseModel)
 
 
 class DataMapper:

@@ -1,7 +1,7 @@
 """hotels migration
 
 Revision ID: b0e9a751339c
-Revises: 
+Revises:
 Create Date: 2025-01-23 22:41:30.744586
 
 """

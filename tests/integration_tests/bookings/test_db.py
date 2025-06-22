@@ -9,9 +9,9 @@ async def test_booking_crud(db):
     booking_data = BookingAddDTO(
         user_id=user_id,
         room_id=room_id,
-        date_from=date.fromisoformat('2025-03-12'),
-        date_to=date.fromisoformat('2025-03-16'),
-        price=100
+        date_from=date.fromisoformat("2025-03-12"),
+        date_to=date.fromisoformat("2025-03-16"),
+        price=100,
     )
     new_booking = await db.bookings.add(booking_data)
     booking = await db.bookings.get_one_or_none(id=new_booking.id)
@@ -26,9 +26,9 @@ async def test_booking_crud(db):
     updated_booking_data = BookingAddDTO(
         user_id=user_id,
         room_id=room_id,
-        date_from=date.fromisoformat('2025-03-20'),
-        date_to=date.fromisoformat('2025-03-25'),
-        price=50
+        date_from=date.fromisoformat("2025-03-20"),
+        date_to=date.fromisoformat("2025-03-25"),
+        price=50,
     )
     await db.bookings.edit(updated_booking_data, id=new_booking.id)
     updated_booking = await db.bookings.get_one_or_none(id=new_booking.id)

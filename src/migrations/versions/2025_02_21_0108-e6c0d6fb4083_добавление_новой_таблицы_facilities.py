@@ -12,7 +12,6 @@ from alembic import op
 import sqlalchemy as sa
 
 
-
 revision: str = "e6c0d6fb4083"
 down_revision: Union[str, None] = "dfdf00e220c4"
 branch_labels: Union[str, Sequence[str], None] = None
@@ -46,4 +45,3 @@ def upgrade() -> None:
 def downgrade() -> None:
     op.drop_table("rooms_facilities")
     op.drop_table("facilities")
-
