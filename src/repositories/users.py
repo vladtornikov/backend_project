@@ -5,7 +5,7 @@ from sqlalchemy import select
 from src.repositories.base import BaseRepository
 from src.models_database.users import UsersORM
 from src.repositories.mappers.mappers import UserDataMapper
-from src.schemas_API.users import UserAdd, UserWithHashedPassword
+from src.schemas_API.users import UserWithHashedPassword
 
 
 class UsersRepository(BaseRepository):

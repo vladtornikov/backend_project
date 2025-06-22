@@ -1,4 +1,4 @@
-from src.exceptions import AllRoomsAreBookedException, check_dates, ObjectNotFoundException, RoomNotFoundException
+from src.exceptions import check_dates, RoomNotFoundException
 from src.schemas_API.bookings import BookingDTO, BookingAddDTO, BookingAddRequestDTO
 from src.schemas_API.hotels import Hotel
 from src.schemas_API.rooms import Room

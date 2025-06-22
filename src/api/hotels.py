@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Query, HTTPException
+from fastapi import APIRouter, Body, Query
 from datetime import date
 
 from fastapi_cache.decorator import cache

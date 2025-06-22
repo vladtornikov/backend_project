@@ -6,7 +6,7 @@ from src.models_database.users import UsersORM
 from src.schemas_API.bookings import BookingDTO
 from src.schemas_API.facilities import FacilityReply
 from src.schemas_API.hotels import Hotel
-from src.schemas_API.users import User, UserWithHashedPassword
+from src.schemas_API.users import User
 from src.schemas_API.rooms import Room, RoomWithRels
 from src.repositories.mappers.base import DataMapper
 

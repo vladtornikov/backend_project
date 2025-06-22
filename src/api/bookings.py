@@ -1,8 +1,8 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 
 
 from src.api.dependencies import DBDep, UserIdDep
-from src.exceptions import ObjectNotFoundException, AllRoomsAreBookedException, RoomNotFoundException, \
+from src.exceptions import AllRoomsAreBookedException, RoomNotFoundException, \
     AllRoomsAreBookedHTTPException, RoomNotFoundHTTPException
 from src.schemas_API.bookings import BookingAddRequestDTO
 from src.services.bookings import BookingService

@@ -9,8 +9,7 @@ from fastapi_cache.backends.redis import RedisBackend
 
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
-logging.basicConfig(level=logging.INFO)
+sys.path.append(str(Path(__file__).parent.parent)) # noqa: E402
 
 from src.init import redis_manager
 
@@ -18,8 +17,12 @@ from src.api.auth import router as router_auth
 from src.api.hotels import router as router_hotels
 from src.api.rooms import router as router_rooms
 from src.api.bookings import router as router_bookings
-from src.api.facilities import router as router_facilities
 from src.api.images import router as router_image
+from src.api.facilities import router as router_facilities
+
+logging.basicConfig(level=logging.INFO)
+
+
 
 
 @asynccontextmanager

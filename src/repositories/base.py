@@ -1,6 +1,5 @@
 import logging
 
-from fastapi import HTTPException
 from typing import Any
 
 from asyncpg.exceptions import UniqueViolationError
@@ -112,6 +111,6 @@ class BaseRepository:
         stmt = select(self.model).filter_by(**filter_by)
         obj = await self.session.execute(stmt)
         try:
-            res = obj.scalar_one()
+            obj.scalar_one()
         except NoResultFound:
             raise ObjectNotFoundException

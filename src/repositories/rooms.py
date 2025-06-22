@@ -5,7 +5,7 @@ from sqlalchemy.orm import selectinload
 from typing import Any
 from pydantic import BaseModel
 
-from src.exceptions import ObjectNotFoundException, RoomNotFoundException
+from src.exceptions import RoomNotFoundException
 from src.repositories.base import BaseRepository
 from src.repositories.mappers.mappers import RoomDataMapper, RoomDataWithRelsMapper
 from src.repositories.utils import rooms_ids_for_booking

@@ -5,7 +5,7 @@ import jwt
 from src.config import settings
 from src.exceptions import IncorrectTokenException, UserAlreadyExistsException, \
     EmailNotFoundException, IncorrectPasswordException, ObjectAlreadyExistsException
-from src.schemas_API.users import UserAdd, UserWithHashedPassword, User, UserRequestAdd
+from src.schemas_API.users import UserAdd, User, UserRequestAdd
 from src.services.base import BaseService
 
 

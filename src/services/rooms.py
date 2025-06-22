@@ -1,6 +1,6 @@
 from datetime import date
 
-from src.exceptions import ObjectNotFoundException, RoomNotFoundException, check_dates, HotelNotFoundException
+from src.exceptions import ObjectNotFoundException, RoomNotFoundException, check_dates
 from src.schemas_API.facilities import RoomsFacilitiesAdd
 from src.schemas_API.rooms import Room, RoomAdd, RoomPatch, RoomAddRequest, RoomPatchRequest
 from src.services.base import BaseService
